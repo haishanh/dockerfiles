@@ -4,12 +4,15 @@ name: Docker workflow
 env:
   REGISTRY: ghcr.io
   # IMAGE_NAME: ${{ github.repository }}
-  IMAGE_NAME: miniflux
+  IMAGE_NAME: ${{ github.actor }}/miniflux
 
 jobs:
   miniflux_docker:
     if: github.event_name == 'push' && (startsWith(github.event.ref, 'refs/heads/miniflux/'))
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ['1.17.6']
     permissions:
       contents: read
       packages: write
@@ -18,13 +21,22 @@ jobs:
         with:
           repository: 'miniflux/v2'
 
+      - name: Setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+
       - id: get-tag
+        name: Extract tag from ref
         uses: actions/github-script@0.9.0
         with:
           script: |
             const segments = context.ref.split('/');
             const tag = segments[segments.length-1];
             core.setOutput('tag', tag);
+
+      - name: Print Tag
+        run: echo ${{ steps.get-tag.outputs.tag }}
 
       - name: Cache Docker layers
         uses: actions/cache@v2
@@ -62,13 +74,13 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./packaging/docker
+          context: .
           file: ./packaging/docker/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{steps.get-tag.outputs.tag}}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache
+          cache-from: type=gha
+          cache-to: type=gha
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
