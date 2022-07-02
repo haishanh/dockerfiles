@@ -5,10 +5,9 @@ ARG BUILDPLATFORM
 ARG BUILDOS
 ARG BUILDARCH
 
-RUN echo "BUILDOS=${BUILDOS} BUILDARCH=${BUILDARCH} $BUILDPLATFORM $TARGETPLATFORM" > /log
-
 RUN apk --update --no-cache add \
   bash \
+  xz \
   curl \
   tzdata \
   ca-certificates \
