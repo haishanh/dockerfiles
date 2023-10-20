@@ -11,12 +11,13 @@ ARG PB_VERSION=0.19.0
 
 # download and unzip PocketBase
 RUN wget https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_${TARGETOS}_${TARGETARCH}.zip -O /tmp/pb.zip && \
-  unzip /tmp/pb.zip -d /pb/ && \
+  unzip /tmp/pb.zip -d /app/ && \
   rm /tmp/pb.zip
 
 EXPOSE 8090
 
-CMD ["/pb/pocketbase", "serve"]
+ENTRYPOINT ["/app/pocketbase"]
+CMD ["serve", "--http", "0.0.0.0:8090"]
 
 # https://github.com/pocketbase/pocketbase/releases/download/v0.19.0/pocketbase_0.19.0_linux_amd64.zip
 # https://github.com/pocketbase/pocketbase/releases/download/v0.19.0/pocketbase_0.19.0_linux_arm64.zip
