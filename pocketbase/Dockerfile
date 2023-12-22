@@ -14,8 +14,13 @@ RUN wget https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSIO
   unzip /tmp/pb.zip -d /app/ && \
   rm /tmp/pb.zip
 
-EXPOSE 8090
+ENV PUID="3872" PGID="3872"
+RUN addgroup --system --gid ${PGID} jing
+RUN adduser --system --uid ${PUID} -G jing -h /home/jing jing
 
+USER jing
+
+EXPOSE 8090
 ENTRYPOINT ["/app/pocketbase"]
 CMD ["serve", "--http", "0.0.0.0:8090"]
 
