@@ -20,6 +20,7 @@ RUN adduser --system --uid ${PUID} -G jing -h /home/jing jing
 
 USER jing
 
+WORKDIR /app
 EXPOSE 8090
 ENTRYPOINT ["/app/pocketbase"]
 CMD ["serve", "--http", "0.0.0.0:8090"]
