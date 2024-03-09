@@ -3,7 +3,7 @@ FROM alpine:latest
 ARG TARGETOS
 ARG TARGETARCH
 
-ARG PB_VERSION=0.20.4
+ARG PB_VERSION=0.22.3
 
 # RUN apk add --no-cache \
 #     unzip \
