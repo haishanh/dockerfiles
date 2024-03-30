@@ -1,4 +1,4 @@
-ARG CADDY_TAG=2.6.1
+ARG CADDY_TAG=2.7.6
 
 FROM caddy:${CADDY_TAG}-builder AS builder
 
