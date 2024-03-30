@@ -102,7 +102,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.6.0
 
       - id: get-tag
         name: Extract tag from ref
@@ -182,7 +182,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.6.0
 
       - id: get-tag
         name: Extract tag from ref
@@ -256,7 +256,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.6.0
 
       - id: get-tag
         name: Extract tag from ref
@@ -330,7 +330,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.6.0
 
       - id: get-tag
         name: Extract tag from ref
