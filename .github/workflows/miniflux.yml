@@ -17,7 +17,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v2.7.0
+      - uses: actions/checkout@v4.1.1
         with:
           repository: 'miniflux/v2'
 
@@ -102,7 +102,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v4.1.1
 
       - id: get-tag
         name: Extract tag from ref
@@ -182,7 +182,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v4.1.1
 
       - id: get-tag
         name: Extract tag from ref
@@ -256,7 +256,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v4.1.1
 
       - id: get-tag
         name: Extract tag from ref
@@ -330,7 +330,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v3.6.0
+      - uses: actions/checkout@v4.1.1
 
       - id: get-tag
         name: Extract tag from ref
