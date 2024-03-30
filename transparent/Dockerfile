@@ -1,4 +1,4 @@
-FROM crazymax/alpine-s6:3.15-2.2.0.3 AS init
+FROM crazymax/alpine-s6:3.19-2.2.0.3 AS init
 RUN apk --update --no-cache add \
   bash \
   ca-certificates \
