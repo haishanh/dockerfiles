@@ -256,7 +256,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v2.1.0
 
       - id: get-tag
         name: Extract tag from ref
