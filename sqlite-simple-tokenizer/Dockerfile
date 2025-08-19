@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM:-linux/amd64} debian:bookworm AS init
+FROM --platform=${TARGETPLATFORM:-linux/amd64} debian:trixie AS init
 
 RUN apt-get update \
   && apt-get install -y build-essential git cmake \
