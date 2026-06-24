@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM:-linux/amd64} debian:trixie AS init
+FROM --platform=${TARGETPLATFORM:-linux/amd64} debian:trixie-20260623 AS init
 
 RUN apt-get update \
   && apt-get install -y build-essential git cmake \
